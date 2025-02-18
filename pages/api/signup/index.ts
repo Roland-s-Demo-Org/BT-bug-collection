@@ -26,7 +26,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
       await connectMongo();
 
       const existingEmail = await UserModel.findOne({
-        email: userData.email,
+        email: String(userData.email),
       }).lean();
 
       if (existingEmail) {
